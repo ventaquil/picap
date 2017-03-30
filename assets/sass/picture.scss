@@ -1,0 +1,60 @@
+div#picture-presentation-container.container {
+    background-color: #181818;
+    border-radius: 0.3rem;
+    margin-top: 1.8rem;
+    padding-bottom: 3.6rem;
+    padding-top: 3.6rem;
+
+    div.row {
+        a {
+            color: #ccff00;
+
+            &:hover {
+                color: #ffffff;
+                text-decoration: none;
+            }
+        }
+
+        &:nth-child(1) {
+            div {
+                h3 {
+                    margin: 0.9rem 0;
+                    position: relative;
+
+                    a {
+                        bottom: 0;
+                        font-size: 1rem;
+                        position: absolute;
+                        right: 0;
+                    }
+                }
+            }
+        }
+
+        &:nth-child(2) {
+            div {
+                background-color: #000000;
+
+                img {
+                    max-width: 100%;
+                }
+            }
+        }
+
+        &:nth-child(3) {
+            padding-top: 1.8rem;
+
+            div {
+                a#show-qr {
+                    cursor: pointer;
+                }
+
+                div#qr-container {
+                    height: 0;
+                    overflow: hidden;
+                    transition: height 0.5s;
+                }
+            }
+        }
+    }
+}

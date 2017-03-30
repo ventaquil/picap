@@ -1,0 +1,36 @@
+nav {
+    background-color: #181818;
+    cursor: default;
+    height: 4rem;
+
+    a {
+        display: inline-block;
+        height: 100%;
+        outline: 0;
+
+        &:hover {
+            strong {
+                background-color: #464646;
+            }
+        }
+        &:hover, &:focus {
+            outline: 0;
+            text-decoration: none;
+        }
+
+        strong {
+            border-radius: 1rem;
+            color: #ccff00;
+            display: block;
+            font-size: 2rem;
+            line-height: 3.5rem;
+            margin: 0.25rem;
+            padding: 0 1.5rem;
+            transition: background-color 0.1s ease-in-out;
+
+            span {
+                color: #ffffff;
+            }
+        }
+    }
+}

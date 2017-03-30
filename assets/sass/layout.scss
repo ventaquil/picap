@@ -1,0 +1,18 @@
+@import "_bootstrap";
+
+body {
+    background-color: #000000;
+    color: #e5e5e5;
+
+    .js-only {
+        @extend .hidden;
+    }
+
+    // Layout files
+    @import "layout/navbar";
+
+    // Page files
+    @import "error";
+    @import "homepage";
+    @import "picture";
+}

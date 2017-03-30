@@ -1,0 +1,46 @@
+{
+  "name": "picap",
+  "version": "0.1.0",
+  "description": "Picture Capture Application",
+  "main": "application.js",
+  "dependencies": {
+    "async": "^2.2.0",
+    "crypto": "0.0.3",
+    "dateformat": "^2.0.0",
+    "express": "^4.15.2",
+    "express-fileupload": "^0.1.2",
+    "fs": "0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.0.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-uglify": "^2.1.2",
+    "mongodb": "^2.2.25",
+    "path": "^0.12.7",
+    "process": "^0.11.9",
+    "pug": "^2.0.0-beta11",
+    "qr-image": "^3.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ventaquil/picap.git"
+  },
+  "keywords": [
+    "picture",
+    "capture",
+    "image",
+    "application"
+  ],
+  "author": "ventaquil <ventaquil@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ventaquil/picap/issues"
+  },
+  "homepage": "https://github.com/ventaquil/picap#readme"
+}

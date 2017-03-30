@@ -35,3 +35,14 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# Application
+!/storage/.gitkeep
+!/storage/logs/.gitkeep
+!/storage/pictures/.gitkeep
+!/storage/trash/.gitkeep
+/storage/
+/public/css/
+!/public/css/.gitkeep
+/public/javascript/
+!/public/javascript/.gitkeep

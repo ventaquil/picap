@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+    div#homepage-index-container.container.text-center
+        div.row
+            div.col-xs-12
+                h1
+                    span
+                        | Upload your picture with
+                        |
+                        strong
+                            span picap
+                        | !
+
+        div.row
+            div.col-xs-12
+                form#upload-form(method="post" enctype="multipart/form-data")
+                    label.btn(for="upload-button") Upload
+                    input#upload-button.hidden(name="picture" type="file" value="Upload Picture")
+
+                script(type="text/javascript")
+                    | document.addEventListener('DOMContentLoaded', function () {
+                    |     document.getElementById('upload-button').addEventListener('change', function () {
+                    |         document.getElementById('upload-form').submit();
+                    |     });
+                    | });

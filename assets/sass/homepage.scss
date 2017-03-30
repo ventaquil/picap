@@ -1,0 +1,65 @@
+div#homepage-index-container.container {
+    background-color: #181818;
+    border: 0.1rem solid #ccff00;
+    border-radius: 0.3rem;
+    margin-top: 7rem;
+    padding-bottom: 3.6rem;
+    padding-top: 3.6rem;
+
+    @media (min-width: $screen-md-min) {
+        max-width: 800px;
+        width: 60%;
+    }
+
+    div.row {
+        div {
+            h1 {
+                cursor: default;
+                margin: 0 0 7rem;
+
+                span {
+                    strong {
+                        color: #ccff00;
+                        opacity: 0.7;
+                        transition: opacity 0.3s;
+
+                        span {
+                            border-bottom: 0.1rem solid transparent;
+                            padding-bottom: 0;
+                            transition: border-color 0.3s, padding-bottom 0.3s;
+                        }
+                    }
+
+                    &:hover {
+                        strong {
+                            opacity: 1.0;
+
+                            span {
+                                border-bottom-color: #ffffff;
+                                padding-bottom: 0.3rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            form#upload-form {
+                label.btn[for="upload-button"] {
+                    background-color: transparent;
+                    border: 0.1rem solid #ccff00;
+                    border-radius: 0.3rem;
+                    color: #ccff00;
+                    font-size: 2.4rem;
+                    padding: 1rem 3.6rem;
+                    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+
+                    &:hover {
+                        background-color: #ccff00;
+                        border-color: transparent;
+                        color: #000000;
+                    }
+                }
+            }
+        }
+    }
+}

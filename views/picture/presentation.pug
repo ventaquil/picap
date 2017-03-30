@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+    div#picture-presentation-container.container
+        div.row
+            div.col-xs-12
+                h3
+                    | Uploaded picture
+                    |
+                    a(href=src target="_blank") (Open in full size)
+
+        div.row
+            div.col-xs-12.text-center
+                img(src=src)
+
+        div.row
+            div.col-xs-12
+                a#show-qr.js-only Show QR Code
+
+                div#qr-container
+                    img(src='data:image/png;base64,' + qr)#qr-image
