@@ -7,15 +7,6 @@ div#picture-presentation-container.container {
     padding-top: 3.6rem;
 
     div.row {
-        a {
-            color: #ccff00;
-
-            &:hover {
-                color: #ffffff;
-                text-decoration: none;
-            }
-        }
-
         &:nth-child(1) {
             div {
                 h3 {
