@@ -1,4 +1,4 @@
-# picup
+# picap
 Your own pictures uploader! Download and host.
 
 ## Installation
