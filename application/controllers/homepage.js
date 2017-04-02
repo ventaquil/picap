@@ -37,74 +37,69 @@ module.exports = {
         var filepath = path.join(directory.storage(), place); // Create filepath
 
         var date = {};
-        async.each(['yyyy', 'mm', 'dd', 'HH', 'MM', 'ss'], function (part, callback) { // Create directories
+
+        ['yyyy', 'mm', 'dd', 'HH', 'MM', 'ss'].forEach(function (part) { // Create directories
             filepath = path.join(filepath, date[part] = dateformat(part));
 
             if (fs.existsSync(filepath) === false) {
-                fs.mkdir(filepath);
+                fs.mkdirSync(filepath);
             }
+        });
 
-            callback();
-        }, function (err) {
+        filepath = path.join(filepath, file);
+
+        if (picture.data.byteLength > max_size) {
+            throw 'Oversize';
+        }
+
+        picture.mv(filepath, function (err) { // Move path or catch error
             if (err) {
                 throw err;
             }
 
-            filepath = path.join(filepath, file);
+            if (allowed.indexOf(mimetype) !== -1) {
+                database.connect(function (err, db) {
+                    if (err) {
+                        throw err;
+                    }
 
-            if (picture.data.byteLength > max_size) {
-                throw 'Oversize';
-            }
+                    var datepath = '';
+                    for (var key in date) {
+                        datepath = path.join(datepath, date[key]);
+                    }
 
-            picture.mv(filepath, function (err) { // Move path or catch error
-                if (err) {
-                    throw err;
-                }
+                    const url = crypto.createHmac('sha256', filename).update(datepath).digest('hex')
+                        .substr(0, random(4, 16));
 
-                if (allowed.indexOf(mimetype) !== -1) {
-                    database.connect(function (err, db) {
+                    db.collection('pictures', function (err, collection) {
                         if (err) {
                             throw err;
                         }
 
-                        var datepath = '';
-                        for (var key in date) {
-                            datepath = path.join(datepath, date[key]);
-                        }
-
-                        const url = crypto.createHmac('sha256', filename).update(datepath).digest('hex')
-                            .substr(0, random(4, 16));
-
-                        db.collection('pictures', function (err, collection) {
-                            if (err) {
-                                throw err;
-                            }
-
-                            collection.insertOne({
-                                'date': {
-                                    'year': date.yyyy,
-                                    'month': date.mm,
-                                    'day': date.dd,
-                                    'hour': date.HH,
-                                    'minute': date.MM,
-                                    'second': date.ss
-                                },
-                                'directory': datepath,
-                                'ext': ext,
-                                'file': file,
-                                'filename': filename,
-                                'size': picture.data.byteLength,
-                                'timestamp': new Date().getTime(),
-                                'url': url
-                            });
-
-                            db.close();
-
-                            res.redirect('/p/' + url);
+                        collection.insertOne({
+                            'date': {
+                                'year': date.yyyy,
+                                'month': date.mm,
+                                'day': date.dd,
+                                'hour': date.HH,
+                                'minute': date.MM,
+                                'second': date.ss
+                            },
+                            'directory': datepath,
+                            'ext': ext,
+                            'file': file,
+                            'filename': filename,
+                            'size': picture.data.byteLength,
+                            'timestamp': new Date().getTime(),
+                            'url': url
                         });
+
+                        db.close();
+
+                        res.redirect('/p/' + url);
                     });
-                }
-            });
+                });
+            }
         });
     }
 };
