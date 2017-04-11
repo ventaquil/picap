@@ -11,7 +11,7 @@ module.exports = {
 
         return '[' + hour + ']: ' + data;
     },
-    'log': function (data, callback) {
+    'log': function (data, verbose, callback) {
         if (!callback) {
             callback = function () {};
         }
@@ -29,6 +29,12 @@ module.exports = {
 
         log_path = path.join(log_path, filename);
 
-        fs.appendFile(log_path, this._get_message(data), null, callback);
+        var message = this._get_message(data);
+
+        if (verbose) {
+            console.log(message);
+        }
+
+        fs.appendFile(log_path, message, null, callback);
     }
 };
