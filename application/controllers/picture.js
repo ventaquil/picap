@@ -6,7 +6,7 @@ const path = require('path');
 const qr = require('qr-image');
 
 module.exports = {
-    'presentationAction': function (req, res) {
+    'presentation_action': function (req, res) {
         if (req.params.url) {
             database.connect(function (err, db) {
                 if (err) {
@@ -37,7 +37,7 @@ module.exports = {
             req.next();
         }
     },
-    'showAction': function (req, res) {
+    'show_action': function (req, res) {
         if (req.params.url && req.params.ext) {
             database.connect(function (err, db) {
                 if (err) {
