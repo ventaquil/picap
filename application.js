@@ -6,6 +6,7 @@ const express = require('express');
 const file_upload = require('express-fileupload');
 const process = require('process');
 const routes = require('./application/routes');
+const session = require('express-session');
 
 const app = express();
 
@@ -16,6 +17,16 @@ app.set('view engine', 'pug'); // Set render engine
 app.use(file_upload()); // Add file upload module
 
 app.use(express.static(directory.public())); // Set static folder
+
+app.use(session({
+    'cookie': {
+        'secure': false
+    },
+    'name': 'sid',
+    'resave': false,
+    'saveUninitialized': true,
+    'secret': process.env.SECURE || 'secure'
+}));
 
 database.connect(function (err, db) {
     console.log('MongoDB is running (port ' + database.port + ', database ' + database.database + ')');
