@@ -10,6 +10,7 @@ const database = function () {
 
     this.url = 'mongodb://localhost:' + this.port + '/' + this.database;
 };
+
 database.prototype.connect = function (callback) {
     mongodb.connect(this.url, callback);
 };
