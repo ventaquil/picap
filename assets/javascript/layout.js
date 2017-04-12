@@ -1,8 +1,9 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const jsOnlyElements = document.getElementsByClassName('js-only');
-    for (var i = 0; i < jsOnlyElements.length; ++i) {
-        var element = jsOnlyElements.item(i);
+'use strict';
 
+document.addEventListener('DOMContentLoaded', function () {
+    const jsOnlyElements = Array.prototype.slice.call(document.getElementsByClassName('js-only'));
+
+    jsOnlyElements.forEach(function (element) {
         element.className = element.className.replace('js-only', '').trim();
-    }
+    });
 });
