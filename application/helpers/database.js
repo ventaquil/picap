@@ -10,15 +10,9 @@ const database = function () {
 
     this.url = 'mongodb://localhost:' + this.port + '/' + this.database;
 };
-database.getInstance = function () {
-    if (typeof this.instance === 'undefined') {
-        this.instance = new database;
-    }
 
-    return this.instance;
-};
 database.prototype.connect = function (callback) {
     mongodb.connect(this.url, callback);
 };
 
-module.exports = database.getInstance();
+module.exports = new database;

@@ -14,8 +14,28 @@ block content
                 img(src=src)
 
         div.row
-            div.col-xs-12
+            div.col-xs-12.col-sm-6
                 a#show-qr.js-only Show QR Code
 
                 div#qr-container
                     img(src='data:image/png;base64,' + qr)#qr-image
+
+            if session.uploaded.indexOf(url) >= 0
+                div.col-xs-12.col-sm-6.text-right
+                    a#edit.js-only Edit
+
+    if session.uploaded.indexOf(url) >= 0
+        div#picture-presentation-edit-container.container-fluid.hidden
+            div.row
+                div#edit-box.col-xs-12.col-md-4.col-md-offset-4
+                    div.text-center
+                        h3
+                            span Edit
+
+                        button#delete.btn.btn-danger Delete
+
+                        div.alert.alert-success.hidden
+
+                        div.alert.alert-danger.hidden
+
+                        a#close close

@@ -13,10 +13,10 @@ function random(low, high) {
 }
 
 module.exports = {
-    'indexAction': function (req, res) {
+    'index_action': function (req, res) {
         res.render('homepage/index', {'title': 'Welcome on picap!'});
     },
-    'uploadAction': function (req, res) {
+    'upload_action': function (req, res) {
         const allowed = ['image/gif', 'image/jpeg', 'image/jpg', 'image/png']; // Allowed mime types
         const max_size = 10485760; // 10MB, 10 * 1024 * 1024
 
@@ -85,6 +85,7 @@ module.exports = {
                                 'minute': date.MM,
                                 'second': date.ss
                             },
+                            'deleted': false,
                             'directory': datepath,
                             'ext': ext,
                             'file': file,
@@ -93,6 +94,8 @@ module.exports = {
                             'timestamp': new Date().getTime(),
                             'url': url
                         });
+
+                        req.session.uploaded.push(url);
 
                         db.close();
 
