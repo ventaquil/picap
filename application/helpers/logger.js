@@ -9,7 +9,7 @@ module.exports = {
     '_get_message': function (data) {
         const hour = dateformat('HH:MM:ss');
 
-        return '[' + hour + ']: ' + data;
+        return '[' + hour + ']: ' + data + '\n';
     },
     'log': function (data, verbose, callback) {
         if (!callback) {
