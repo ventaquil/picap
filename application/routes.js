@@ -8,6 +8,7 @@ const homepage = require('./controllers/homepage');
 const picture = require('./controllers/picture');
 const process = require('process');
 const session = require('express-session');
+const uploaded = require('./middlewares/uploaded');
 
 const routes = function (app) {
     this._app = app;
@@ -29,7 +30,8 @@ routes.prototype._middlewares = function () {
             'resave': false,
             'saveUninitialized': true,
             'secret': process.env.SECURE || 'secure'
-        })
+        }),
+        uploaded
     ];
 
     const app = this._app;
@@ -40,17 +42,21 @@ routes.prototype._middlewares = function () {
 };
 
 routes.prototype._routes = function () {
+    const app = this._app;
+
     { // Homepage
-        this._app.get('/', homepage.index_action);
-        this._app.post('/', homepage.upload_action);
+        app.get('/', homepage.index_action);
+        app.post('/', homepage.upload_action);
     }
 
     { // Picture
-        this._app.get('/p/:url\.:ext', picture.show_action);
-        this._app.get('/p/:url', picture.presentation_action);
+        app.get('/p/:url\.:ext', picture.show_action);
+        app.get('/p/:url', picture.presentation_action);
+
+        app.post('/d/:url', picture.delete_action);
     }
 
-    this._app.all('*', error.code_404);
+    app.all('*', error.code_404);
 };
 
 module.exports = function (app) {

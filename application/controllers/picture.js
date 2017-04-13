@@ -6,6 +6,51 @@ const path = require('path');
 const qr = require('qr-image');
 
 module.exports = {
+    'delete_action': function (req, res) {
+        if (req.params.url && (req.session.uploaded.indexOf(req.params.url) >= 0)) {
+            database.connect(function (err, db) {
+                if (err) {
+                    throw err;
+                }
+
+                db.collection('pictures', function (err, collection) {
+                    if (err) {
+                        throw err;
+                    }
+
+                    collection.updateOne({
+                        'deleted': false,
+                        'url': req.params.url
+                    }, {
+                        '$set': {'deleted': true}
+                    }, function (err, response) {
+                        if (err) {
+                            throw err;
+                        }
+
+                        const success = response.modifiedCount > 0;
+
+                        var message;
+                        if (success) {
+                            message = 'Picture was successfully deleted.';
+                        } else {
+                            message = 'You cannot do this.';
+                        }
+
+                        res.json({
+                            'message': message,
+                            'success': success
+                        });
+                    });
+                });
+            });
+        } else {
+            res.json({
+                'message': 'Internal error.',
+                'success': false
+            });
+        }
+    },
     'presentation_action': function (req, res) {
         if (req.params.url) {
             database.connect(function (err, db) {
@@ -18,7 +63,7 @@ module.exports = {
                         throw err;
                     }
 
-                    collection.findOne({'url': req.params.url}, function (err, picture) {
+                    collection.findOne({'deleted': false, 'url': req.params.url}, function (err, picture) {
                         db.close();
 
                         if (picture === null) {
@@ -27,8 +72,10 @@ module.exports = {
 
                         res.render('picture/presentation', {
                             'qr': new Buffer(qr.imageSync(req.protocol + '://' + req.get('host') + req.path)).toString('base64'),
+                            'session': req.session,
                             'src': req.path + '.' + picture.ext,
-                            'title': 'Uploaded picture'
+                            'title': 'Uploaded picture',
+                            'url': picture.url
                         });
                     });
                 });
@@ -49,7 +96,7 @@ module.exports = {
                         throw err;
                     }
 
-                    collection.findOne({'url': req.params.url, 'ext': req.params.ext}, function (err, picture) {
+                    collection.findOne({'deleted': false, 'ext': req.params.ext, 'url': req.params.url}, function (err, picture) {
                         db.close();
 
                         if (picture === null) {

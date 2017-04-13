@@ -85,6 +85,7 @@ module.exports = {
                                 'minute': date.MM,
                                 'second': date.ss
                             },
+                            'deleted': false,
                             'directory': datepath,
                             'ext': ext,
                             'file': file,
@@ -93,6 +94,8 @@ module.exports = {
                             'timestamp': new Date().getTime(),
                             'url': url
                         });
+
+                        req.session.uploaded.push(url);
 
                         db.close();
 
