@@ -16,13 +16,13 @@ div#error-code404-container.container {
             }
 
             a {
-                border-bottom: 0.1rem solid #ccff00;
-                color: #ffffff;
+                border-bottom: 0.1rem solid #ffffff;
+                color: #ccff00;
                 transition: color 0.3s, border-bottom-color 0.3s;
 
                 &:hover {
-                    border-bottom-color: #ffffff;
-                    color: #ccff00;
+                    border-bottom-color: #ccff00;
+                    color: #ffffff;
                 }
             }
         }
