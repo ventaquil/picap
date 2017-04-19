@@ -1,5 +1,3 @@
-@import "_bootstrap";
-
 body {
     background-color: #000000;
     color: #e5e5e5;
@@ -22,9 +20,4 @@ body {
     // Layout files
     @import "layout/footer";
     @import "layout/navbar";
-
-    // Page files
-    @import "error";
-    @import "homepage";
-    @import "picture";
 }

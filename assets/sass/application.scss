@@ -1,0 +1,10 @@
+// Bootstrap first
+@import "application/bootstrap";
+
+// Moment later main layout files
+@import "application/layout";
+
+// And page files at the end
+@import "application/error";
+@import "application/homepage";
+@import "application/picture";
