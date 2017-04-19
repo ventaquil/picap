@@ -1,0 +1,31 @@
+div#error-code404-container.container {
+    background-color: #181818;
+    border: 0.1rem solid #2f2f2f;
+    margin-top: 7rem;
+    padding-bottom: 3.6rem;
+    padding-top: 3.6rem;
+    transform: skew(9deg);
+
+    div.row {
+        > div {
+            cursor: default;
+            transform: skew(-9deg);
+
+            h1 {
+                color: #ccff00;
+                font-size: 6.4rem;
+            }
+
+            a {
+                border-bottom: 0.1rem solid #ccff00;
+                color: #ffffff;
+                transition: color 0.3s, border-bottom-color 0.3s;
+
+                &:hover {
+                    border-bottom-color: #ffffff;
+                    color: #ccff00;
+                }
+            }
+        }
+    }
+}
