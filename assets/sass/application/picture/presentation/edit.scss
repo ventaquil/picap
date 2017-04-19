@@ -1,0 +1,49 @@
+div#picture-presentation-edit-container.container-fluid {
+    background-color: rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+
+    div.row {
+        div#edit-box {
+            > div {
+                background-color: #181818;
+                padding: 1.8rem 0;
+                position: relative;
+
+                a#close {
+                    cursor: pointer;
+                    position: absolute;
+                    right: 0.8rem;
+                    top: 0.8rem;
+                }
+
+                div.alert {
+                    color: #ffffff;
+                    font-weight: bold;
+                    margin: 0 5rem;
+
+                    &.alert-danger {
+                        background-color: rgba(#cc0000, 0.2);
+                        border-color: #cc0000;
+                    }
+
+                    &.alert-success {
+                        background-color: rgba(#ccff00, 0.2);
+                        border-color: #ccff00;
+                    }
+                }
+
+                h3 {
+                    margin: 2rem 0;
+
+                    span {
+                        border-bottom: 0.1rem solid #ccff00;
+                    }
+                }
+            }
+        }
+    }
+}
