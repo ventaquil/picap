@@ -13,6 +13,12 @@ app.set('view engine', 'pug'); // Set render engine
 const routes = require('./application/routes')(app);
 
 database.connect(function (err, db) {
+    if (err) {
+        logger.log('MongoDB error: ' + err, true);
+
+        process.exit();
+    }
+
     logger.log('MongoDB is running (port ' + database.port + ', database ' + database.database + ')', true);
 
     db.close();
