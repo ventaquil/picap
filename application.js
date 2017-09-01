@@ -6,7 +6,7 @@ const logger =  require('./application/helpers/logger');
 const process = require('process');
 const app = express();
 
-const port = process.env.PORT || 8000; // Choose application port
+const port = process.env.PICAP_PORT || 8000; // Choose application port
 
 app.set('view engine', 'pug'); // Set render engine
 
