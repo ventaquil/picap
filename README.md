@@ -10,6 +10,7 @@ After that generate public files using `gulp` command
 Start application with `node application.js`
 
 Optional environment parameters:
-* **PORT** to specify server port
-* **MONGODB_PORT** to specify MongoDB port
-* **MONGODB_DATABASE** to specify MongoDB database
+* **PICAP_PORT** to specify server port
+* **PICAP_MONGODB_SERVER** to specify MongoDB server host
+* **PICAP_MONGODB_PORT** to specify MongoDB port
+* **PICAP_MONGODB_DATABASE** to specify MongoDB database
